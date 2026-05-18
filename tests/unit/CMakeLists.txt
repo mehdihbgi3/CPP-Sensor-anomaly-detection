@@ -1,0 +1,50 @@
+# Core tests
+add_executable(core_tests
+    core/SensorTest.cpp
+)
+target_link_libraries(core_tests
+    PRIVATE
+        sensorcore_core
+        GTest::gtest
+        GTest::gtest_main
+        GTest::gmock
+)
+gtest_discover_tests(core_tests)
+# Analysis tests
+add_executable(analysis_tests
+    analysis/StatisticalAnalyzerTest.cpp
+    analysis/AnomalyDetectorTest.cpp
+)
+target_link_libraries(analysis_tests
+    PRIVATE
+        sensorcore_analysis
+        sensorcore_core
+        GTest::gtest
+        GTest::gtest_main
+        GTest::gmock
+)
+gtest_discover_tests(analysis_tests)
+# Multithreading tests
+add_executable(multithreading_tests
+    multithreading_tests.cpp
+)
+target_link_libraries(multithreading_tests
+    PRIVATE
+        sensorcore_core
+        GTest::gtest
+        GTest::gtest_main
+        GTest::gmock
+)
+gtest_discover_tests(multithreading_tests)
+# Database tests
+add_executable(database_tests
+    database_tests.cpp
+)
+target_link_libraries(database_tests
+    PRIVATE
+        sensorcore_persistence
+        GTest::gtest
+        GTest::gtest_main
+        GTest::gmock
+)
+gtest_discover_tests(database_tests)
